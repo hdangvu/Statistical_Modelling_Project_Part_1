@@ -1,0 +1,36 @@
+---
+title: "BIXI Project - Part 1"
+author: "Ha Dang Vu"
+date: "2025-09-13"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data
+```{r}
+bixi_data <- read.csv("bixi_part_1.csv")
+head(bixi_data)
+```
+
+# Descriptive statistics and histograms 
+```{r}
+summary(bixi_data)
+summary<-sapply(bixi_data,function(x) c(mean(x),sd(x),min(x),max(x),length(x)))
+row.names(summary)<-c("mean","sd","min","max","n")
+summary
+```
+
+# Histograms
+```{r}
+par(mfrow=c(1,2))
+hist(bixi_data$lat,xlab="latitude")
+hist(bixi_data$long,xlab="longitude")
+hist(bixi_data$dur,xlab="trip duration")
+hist(bixi_data$mm,xlab="departure month")
+hist(bixi_data$jj,xlab="departure day")
+hist(bixi_data$temp,xlab="average daily temperature")
+hist(bixi_data$prec,xlab="daily rainfall (in mm)")
+```
